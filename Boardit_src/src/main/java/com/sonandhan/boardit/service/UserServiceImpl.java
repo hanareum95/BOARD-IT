@@ -1,5 +1,6 @@
 package com.sonandhan.boardit.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -21,4 +22,9 @@ public class UserServiceImpl implements UserService {
 		return dao.selectMember();
 	}
 
+	//TODO:: add
+	@Override
+	public void signupUser(UserDTO user){
+		dao.insertMember(user);
+	}
 }

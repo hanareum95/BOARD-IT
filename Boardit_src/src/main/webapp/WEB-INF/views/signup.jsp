@@ -15,24 +15,16 @@
 
 	<div class="signup-page">
 		<div class="form">
-			<form class="register-form">
+			<form class="register-form" id = "signupForm" action = "signup" method = "post">
 				<h3>Create a BOARD-IT Account</h3>
 				<p>Name</p>
-				<input type="text" placeholder="e.g., hong gildong" />
+				<input type="text" name="userName" placeholder="e.g., hong gildong" />
 				<p>E-mail</p>
-				<input type="text" placeholder="e.g., board@it.com" />
+				<input type="text" name="userId" placeholder="e.g., board@it.com" />
 				<p>Password</p>
-				<input type="password" placeholder="e.g., ********" />
-				<button>Create a new Account</button>
+				<input type="password" name="userPassword" placeholder="e.g., ********" />
+				<input id="submit" type="submit" value="Create a new Account"/>
 			</form>
-			<!-- <form class="login-form">
-				<input type="text" placeholder="username" /> 
-				<input type="password" placeholder="password" />
-				<button>login</button>
-				<p class="message">
-					Not registered? <a href="#">Create an account</a>
-				</p>
-			</form> -->
 		</div>
 	</div>
 	<script

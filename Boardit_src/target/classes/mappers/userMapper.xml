@@ -6,10 +6,13 @@
 <mapper namespace="com.example.mapper.userMapper">
 
 	<select id="selectUser" resultType="userDTO">
-		SELECT USER_ID,
-		USER_PASSWORD
-		,USER_NAME FROM USER;
+		SELECT USER_ID,	USER_PASSWORD, USER_NAME FROM USER;
 	</select>
+	
+	<!-- TODO:: add -->
+	<insert id="insertUser" parameterType="userDTO">
+		INSERT INTO USER VALUES(#{userId}, #{userName}, #{userPassword});
+	</insert>
 
 </mapper>
 

@@ -1,6 +1,6 @@
 package com.sonandhan.boardit.dao;
 
-import java.util.List;
+import java.util.*;
 
 import javax.inject.Inject;
 
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.sonandhan.boardit.dto.UserDTO;
 
 @Repository
-public class UserDAOImpl implements UserDAO{
+public class UserDAOImpl implements UserDAO {
 
 	@Inject
 	private SqlSession sqlSession;
@@ -21,6 +21,14 @@ public class UserDAOImpl implements UserDAO{
 	public List<UserDTO> selectMember() throws Exception {
 
 		return sqlSession.selectList(Namespace + ".selectUser");
+	}
+
+	//TODO:: add
+	@Override
+	public int insertMember(UserDTO user) {
+		
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
