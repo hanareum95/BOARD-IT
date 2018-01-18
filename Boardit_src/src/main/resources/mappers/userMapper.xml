@@ -11,7 +11,7 @@
 	
 	<!-- TODO:: add -->
 	<insert id="insertUser" parameterType="userDTO">
-		INSERT INTO USER VALUES(#{userId}, #{userName}, #{userPassword});
+		INSERT INTO USER (user_id, user_password, user_name) VALUES(#{userId}, #{userPassword}, #{userName});
 	</insert>
 
 </mapper>

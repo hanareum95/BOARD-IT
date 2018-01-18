@@ -27,8 +27,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public int insertMember(UserDTO user) {
 		
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert(Namespace+".insertUser", user);
 	}
 
 }
