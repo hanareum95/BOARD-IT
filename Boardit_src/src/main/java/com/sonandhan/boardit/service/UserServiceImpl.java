@@ -18,13 +18,17 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<UserDTO> selectMember() throws Exception {
-		// TODO Auto-generated method stub
 		return dao.selectMember();
 	}
 
-	//TODO:: add
 	@Override
 	public void signupUser(UserDTO user){
 		dao.insertMember(user);
 	}
+
+	@Override
+	public UserDTO findByUserIdAndPassword(String userId, String password) {
+		return dao.findByUserIdAndPassword(userId, password);
+	}
+	
 }

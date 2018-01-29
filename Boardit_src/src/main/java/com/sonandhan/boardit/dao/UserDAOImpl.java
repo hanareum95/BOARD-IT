@@ -23,11 +23,22 @@ public class UserDAOImpl implements UserDAO {
 		return sqlSession.selectList(Namespace + ".selectUser");
 	}
 
-	//TODO:: add
 	@Override
 	public int insertMember(UserDTO user) {
-		
-		return sqlSession.insert(Namespace+".insertUser", user);
+
+		return sqlSession.insert(Namespace + ".insertUser", user);
 	}
 
+	@Override
+	public UserDTO findByUserIdAndPassword(String userId, String userPassword) {
+		Map<String, String> paramMap = new HashMap<String, String>();
+		paramMap.put("userId", userId);
+		paramMap.put("userPassword", userPassword);
+
+		UserDTO user = new UserDTO("",userId, userPassword);
+		int check = sqlSession.selectOne(Namespace + ".checkUser", user);
+		System.out.println("****DAO : "+check);
+		
+		return user;
+	}
 }

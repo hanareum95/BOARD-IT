@@ -19,26 +19,18 @@
 		<button class="btn_login">login</button>
 	</div>
 
-	<table>
-		<thead>
-			<tr>
-				<th>아이디</th>
-				<th>비밀번호</th>
-				<th>이름</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${memberList}" var="member">
-				<tr>
-					<td>${member.user_id}</td>
-					<td>${member.user_password}</td>
-					<td>${member.user_name}</td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-
-
+	<c:choose>
+		<c:when test="${not empty sessionScope.userLoginInfo}">
+			<h2>로그인 성공</h2>
+		이름 : ${sessionScope.userLoginInfo.userName}<br>
+		이메일 : <c:out value="${sessionScope.userLoginInfo.email}" />
+			<br>
+			<br>
+			<a href="logout">로그아웃</a>
+			<br>
+			<br>
+		</c:when>
+	</c:choose>
 
 </body>
 </html>

@@ -6,13 +6,20 @@
 <mapper namespace="com.example.mapper.userMapper">
 
 	<select id="selectUser" resultType="userDTO">
-		SELECT USER_ID,	USER_PASSWORD, USER_NAME FROM USER;
+		SELECT USER_ID,
+		USER_PASSWORD, USER_NAME FROM USER;
 	</select>
-	
-	<!-- TODO:: add -->
+
 	<insert id="insertUser" parameterType="userDTO">
-		INSERT INTO USER (user_id, user_password, user_name) VALUES(#{userId}, #{userPassword}, #{userName});
+		INSERT INTO USER (user_id,
+		user_password, user_name) VALUES(#{userId}, #{userPassword},
+		#{userName});
 	</insert>
+
+	<select id="checkUser" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM USER
+		WHERE USER_ID = (#{userId}) AND USER_PASSWORD = (#{userPassword});
+	</select>
 
 </mapper>
 
