@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+#div_popup {
+	text-align: center;
+}
+
+#p_main {
+	font-weight: bold;
+	color: #3b3f3f;
+	border-bottom-style: solid;
+	border-bottom-color: #3b3f3f;
+	margin-bottom: 5px;
+	padding-bottom: 5px;
+	border-bottom-width: 2px;
+}
+
+#p_title {
+	margin-left:5px;
+	margin-bottom: 10px;
+	text-align: left;
+	color: #9fa0a1;
+}
+
+#form_input {
+	text-align: left;
+}
+
+#c_txt, #c_txt_ex{
+	margin-left:5px;
+    width: 94%;
+    height:30px;
+    box-sizing: border-box;
+    padding : 2px;
+    border: 1px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+	margin-top: 4px;
+}
+
+
+#div_btn{
+	text-align: right;
+	margin-top:10px;
+	margin-right: 10px;
+}
+
+#c_txt:focus{
+    border: 1px solid #555;
+	
+}
+
+#c_txt_ex:focus {
+    border: 1px solid #555;
+}
+
+#btn_submit{
+	text-transform: uppercase;
+	outline: 0;
+	background: #bf3938;
+	border-radius: 4px;
+	width: 70px;
+	height: 22px;
+	border: 2px solid #bf3938;
+	color: #ffffff;
+}
+
+#btn_cancel{
+	text-transform: uppercase;
+	outline: 0;
+	background: #eaeaea;
+	border-radius: 4px;
+	width: 70px;
+	height: 22px;
+	border: 2px solid #eaeaea;
+	color: #9c9d9e;
+	
+}

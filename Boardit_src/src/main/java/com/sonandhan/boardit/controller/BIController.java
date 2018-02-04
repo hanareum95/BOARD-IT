@@ -54,6 +54,22 @@ public class BIController {
 		}
 	}
 
+	@RequestMapping("/board")
+	public String board(Model model) {
+
+		System.out.println("board()");
+		// 작성 화면(form)만 띄움
+		return "board";
+	}
+
+	@RequestMapping("/pop_board")
+	public String popBoard(Model model) {
+
+		System.out.println("pop_board()");
+		// 작성 화면(form)만 띄움
+		return "pop_board";
+	}
+	
 	// 로그인 화면
 	@RequestMapping(value = "/login")
 	public String login(Locale locale, Model model) {
