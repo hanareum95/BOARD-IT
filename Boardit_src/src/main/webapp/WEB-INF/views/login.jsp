@@ -16,7 +16,7 @@
 <body>	
 	<div class="login-page">
 		<div class="form">
-			<form class="login-form" id = "loginForm" action = "home" method = "post">
+			<form class="login-form" id = "loginForm" action = "board" method = "post">
 				<input type="text" name="userId" placeholder="ID" /> 
 				<input type="password" name="userPassword" placeholder="password" />
 				<input class="btn_login" id="submit" type="submit" value="login"/>
