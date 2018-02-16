@@ -33,6 +33,26 @@ body {
 	font-weight: bold;
 }
 
+.header .btn_logout {
+	font-family: "Roboto", sans-serif;
+	text-transform: uppercase;
+	outline: 0;
+	background: #bf3938;
+	border-radius: 4px;
+	width: 100px;
+	height: 34px;
+	margin: 18px 0;
+	border: 2px solid #bf3938;
+	color: #ffffff;
+	font-size: 14px;
+	-webkit-transition: all 0.3 ease;
+	transition: all 0.3 ease;
+	cursor: pointer;
+	float: right;
+	border: 2px solid #bf3938;
+	margin-right: 10px;
+}
+
 .content .ct_personal .ct_personal_header {
 	display: table;
 	width: 90%;

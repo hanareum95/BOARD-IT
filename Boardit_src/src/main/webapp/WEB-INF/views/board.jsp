@@ -18,9 +18,8 @@
 <c:when test="${not empty sessionScope.userLoginInfo }">
 	<div class="header">
 		<img class="img_logo" src="resources/img/boardit.png" />
-
 		<p class="user_name"><c:out value="${sessionScope.userLoginInfo.userId}"/></p>
-		<a href="logout">logout</a>
+		<a class="btn_logout" href="logout">logout</a>
 	</div>
 
 	<div class="content">
