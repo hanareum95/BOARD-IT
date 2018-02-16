@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
@@ -27,8 +28,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserDTO findByUserIdAndPassword(String userId, String password) {
-		return dao.findByUserIdAndPassword(userId, password);
+	public UserDTO findByUserIdAndPassword(String userId, String password, HttpSession session) {
+		UserDTO dto = dao.findByUserIdAndPassword(userId, password, session);
+		return dto;
 	}
 	
 }

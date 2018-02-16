@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
+<%@ page session="true"%>
 <html>
 <head>
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -13,10 +13,13 @@
 <meta charset="UTF-8">
 <title>BOARD-IT</title>
 <body>
+
+<c:choose>
+<c:when test="${not empty sessionScope.userLoginInfo }">
 	<div class="header">
 		<img class="img_logo" src="resources/img/boardit.png" />
 
-		<p class="user_name">mini_son</p>
+		<p class="user_name"><c:out value="${sessionScope.userLoginInfo.userName}"/></p>
 	</div>
 
 	<div class="content">
@@ -27,20 +30,13 @@
 					type="submit">
 					<img class="btn_img" src="resources/img/btn_plus.png">
 				</button>
-
 				<p class="p_personal">Personal Board</p>
 			</div>
-
 			<div class="ct_personal_board">
 				<ul class="boardList" id="personalList">
-
 					<li><a href="https://www.w3schools.com" id="a_school">SAMPLE</a></li>
-
 				</ul>
-
 			</div>
-
-
 		</div>
 
 		<div class="ct_team">
@@ -48,26 +44,19 @@
 				<button class="btn_team_plus" id="btn_team_plus" type="submit">
 					<img class="btn_img" src="resources/img/btn_plus.png">
 				</button>
-
 				<p class="p_team">Team Board</p>
 			</div>
-
 			<div class="ct_team_board">
 				<ul class="boardList" id="teamList">
-
 					<li><a href="https://www.w3schools.com" id="a_school">SAMPLE</a></li>
-
 				</ul>
-
 			</div>
-
-
 		</div>
 
-
-
 	</div>
-
-
+</c:when>
+<c:otherwise>
+</c:otherwise>
+</c:choose>
 </body>
 </html>

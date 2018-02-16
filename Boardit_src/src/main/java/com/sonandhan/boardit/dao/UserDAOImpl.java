@@ -3,6 +3,7 @@ package com.sonandhan.boardit.dao;
 import java.util.*;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -30,7 +31,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public UserDTO findByUserIdAndPassword(String userId, String userPassword) {
+	public UserDTO findByUserIdAndPassword(String userId, String userPassword, HttpSession session) {
 		Map<String, String> paramMap = new HashMap<String, String>();
 		paramMap.put("userId", userId);
 		paramMap.put("userPassword", userPassword);
@@ -39,6 +40,12 @@ public class UserDAOImpl implements UserDAO {
 		int check = sqlSession.selectOne(Namespace + ".checkUser", user);
 		System.out.println("****DAO : "+check);
 		
+		if( check > 0 ){
+			session.setAttribute("userId",user.getUserId());
+			session.setAttribute("userName",user.getUserName());
+		}else{
+			user = null;
+		}
 		return user;
 	}
 }

@@ -10,11 +10,13 @@ import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.sonandhan.boardit.HomeController;
 import com.sonandhan.boardit.command.BICommand;
@@ -36,31 +38,39 @@ public class BIController {
 	@Inject
 	private UserService user_service;
 
-	// 로그인 화면에서 로그인 버튼 클릭 후
-	@RequestMapping(value = "/home")
-	public String home(HttpServletRequest request) throws Exception {
+	// 로그인 처리
+	@RequestMapping(value = "/board")
+	public String board(HttpServletRequest request, HttpSession session) throws Exception {
 
-		logger.info("home");
+		logger.info("board");
 
-		UserDTO loginUser = user_service.findByUserIdAndPassword(request.getParameter("userId"), request.getParameter("userPassword"));
-
+		UserDTO loginUser = user_service.findByUserIdAndPassword(request.getParameter("userId"), request.getParameter("userPassword"), session);
+		ModelAndView mav = new ModelAndView();
 		System.out.println(">>BIController - login(POST)");
 		System.out.println(">>BIController - loginUser : "+loginUser);
 		
-		if(loginUser != null){
-			return "home";
-		}else{
+		if(loginUser != null){ //login success
+			mav.setViewName("board");
+			mav.addObject("msg", "success");
+			System.out.println(">>BIController - session msg : success");
+			
+			session.setAttribute("userLoginInfo", loginUser);
+			return "board";
+		}else{ //login failure
+			mav.setViewName("login");
+			mav.addObject("msg","failure");
+			System.out.println(">>BIController - session msg : failure");
 			return "login";
 		}
 	}
-
-	@RequestMapping("/board")
-	public String board(Model model) {
-
-		System.out.println("board()");
-		// 작성 화면(form)만 띄움
-		return "board";
-	}
+//
+//	@RequestMapping("/board")
+//	public String board(Model model) {
+//
+//		System.out.println("board()");
+//		// 작성 화면(form)만 띄움
+//		return "board";
+//	}
 
 	@RequestMapping("/pop_board")
 	public String popBoard(Model model) {
