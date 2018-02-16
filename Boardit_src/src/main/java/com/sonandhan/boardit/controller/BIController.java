@@ -63,14 +63,13 @@ public class BIController {
 			return "login";
 		}
 	}
-//
-//	@RequestMapping("/board")
-//	public String board(Model model) {
-//
-//		System.out.println("board()");
-//		// 작성 화면(form)만 띄움
-//		return "board";
-//	}
+
+	// 로그아웃
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		session.setAttribute("userLoginInfo", null);
+		return "redirect:login";
+	}
 
 	@RequestMapping("/pop_board")
 	public String popBoard(Model model) {
