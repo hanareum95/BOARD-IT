@@ -1,5 +1,6 @@
 package com.sonandhan.boardit.controller;
 
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
@@ -10,6 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -40,26 +42,28 @@ public class BIController {
 
 	// 로그인 처리
 	@RequestMapping(value = "/board")
-	public String board(HttpServletRequest request, HttpSession session) throws Exception {
+	public String board(HttpServletRequest request, HttpServletResponse response, HttpSession session)
+			throws Exception {
 
 		logger.info("board");
 
-		UserDTO loginUser = user_service.findByUserIdAndPassword(request.getParameter("userId"), request.getParameter("userPassword"), session);
-		ModelAndView mav = new ModelAndView();
+		UserDTO loginUser = user_service.findByUserIdAndPassword(request.getParameter("userId"),
+				request.getParameter("userPassword"), session);
 		System.out.println(">>BIController - login(POST)");
-		System.out.println(">>BIController - loginUser : "+loginUser);
-		
-		if(loginUser != null){ //login success
-			mav.setViewName("board");
-			mav.addObject("msg", "success");
+		System.out.println(">>BIController - loginUser : " + loginUser);
+
+		if (loginUser != null) { // login success
 			System.out.println(">>BIController - session msg : success");
 			
 			session.setAttribute("userLoginInfo", loginUser);
 			return "board";
-		}else{ //login failure
-			mav.setViewName("login");
-			mav.addObject("msg","failure");
+		} else { // login failure
 			System.out.println(">>BIController - session msg : failure");
+			
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('로그인 정보를 확인해주세요.'); history.go(-1);</script>");
+			out.flush();
 			return "login";
 		}
 	}
@@ -78,7 +82,7 @@ public class BIController {
 		// 작성 화면(form)만 띄움
 		return "pop_board";
 	}
-	
+
 	// 로그인 화면
 	@RequestMapping(value = "/login")
 	public String login(Locale locale, Model model) {
